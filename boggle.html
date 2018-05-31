@@ -1,0 +1,185 @@
+<!doctype>
+<html> 
+	<head>
+		<title>Boggle!</title>
+		<script src="https://d3js.org/d3.v5.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.8.9/jquery.csv.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="SOWPODS.js"></script>
+		<style>
+text {
+	font-family: Helvetica;
+}
+	#countdown {
+		font-size: 100;
+		font-style: bold;
+		position: absolute;
+	}
+	#Qu_letter {
+		font-size: 35;
+	}
+	#container {
+		display: flex;
+	}
+	#textbox {
+		text-align: center;
+		font-size: 30;
+		width: 195px;
+		height: 40px;
+		padding: 10px;
+	}
+	#textinput {
+	}
+	.leftdiv {
+		margin:auto;
+		vertical-align: middle;
+		width: 195px;
+		padding: 10px;
+		border: 1px solid #EEE;
+		height: 44px;
+	}
+	#input {
+	}
+	#timerdiv {
+		font-size: 20;
+	}
+	.floater {
+		 float: left;
+		 height: 50%;
+		 width: 100%;
+		 margin-bottom: -10px;
+	}
+	#board {
+		height: 600px;
+		text-align: center;
+		width: 220px;
+	}
+	#livewords {
+		padding: 10px;
+	}
+	#table {
+		height: 350px;
+	}
+	#thedice {
+	}
+	.letter {
+		font-size: 39;
+		font-style: bolder;
+	}
+	.divTable{
+		display: table;
+		width: 200px;
+	}
+	@keyframes fade {
+		from {background-color: #2ae819;}
+		to {}
+	}
+	.score_1 {
+		animation-name: fade;
+		animation-duration: 0.2s;
+	}
+	.score_2 {
+		animation-name: fade;
+		animation-duration: 0.4s;
+	}
+	.score_3 {
+		animation-name: fade;
+		animation-duration: 0.6s;
+	}
+	.score_5 {
+		animation-name: fade;
+		animation-duration: 1s;
+	}
+	.score_11 {
+		animation-name: fade;
+		animation-duration: 2s;
+	}
+	.divTableRow {
+		width: 100%;
+		display: table-row;
+		height: 18px;
+	}
+	.headTableRow {
+		width: 100%;
+		display: table-row;
+		border: 7px solid black;
+		/*border: 3px solid #a4afc1;*/
+		height: 18px;
+	}
+	.headwordCell {
+		text-align: center;
+		/*border: 1px solid #ccd6e8;*/
+		font-weight: bold;
+		display: table-cell;
+		padding: 3px 10px;
+	}
+	.headscoreCell {
+		width: 10px;
+		border: 1px solid #ccd6e8;
+		text-align: center;
+		font-weight: bold;
+		display: table-cell;
+		padding: 3px 10px;
+	}
+	.wordCell {
+		text-align: center;
+	}
+	.scoreCell {
+		width: 10px;
+		text-align: center;
+	}
+	.divTableCell, .divTableHead {
+		border: 1px solid #ccd6e8;
+		display: table-cell;
+		padding: 3px 10px;
+	}
+	.divTableHeading {
+		background-color: #EEE;
+		display: table-header-group;
+		font-weight: bold;
+	}
+	.divTableFoot {
+		background-color: #EEE;
+		display: table-footer-group;
+		font-weight: bold;
+	}
+	.divTableBody {
+		display: table-row-group;
+		border: 1px solid #ccd6e8;
+		/*overflow: auto;*/
+	}
+		</style>
+
+	</head>
+
+	<body onLoad="startup()">
+		<div id="container">
+			<div id="board">
+				<div id="thedice" class="thedice"></div>
+				<div class="leftdiv" id="textinput">
+					<input type="text" id="textbox" onkeypress="handle(event)">
+				</div>
+				<div class="leftdiv" id="input">
+					<div class="floater"></div>
+					<button id="startButton" onclick="init()">Begin!</button> 
+					<button id="showLetterButton" onclick="showLetterButton()">Show Letters</button> 
+					<text id="countdown">
+				</div>
+				<div class="leftdiv" id="timerdiv">
+					<div class="floater"></div>
+					<text id="timer"></text>
+				</div>
+				<div class="leftdiv" id="scorediv">
+					<div class="floater"></div>
+					<text id="score"></text>
+				</div>
+			</div>
+			<div id="livewords" class="divTable">
+				<div id="table" class="divTableBody">
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="boggle.js"></script>
+
+</html>
